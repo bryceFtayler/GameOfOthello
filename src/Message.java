@@ -25,9 +25,9 @@ record MoveRequestMessage(int move) implements Message {
 }
 
 /**
- * Message sent to referee giving a players move. Stores the move of the player.
+ * Message sent to referee giving a players move. Stores the colour and move of the player.
  */
-record MoveMessage(int move) implements Message {
+record MoveMessage(int colour, int move) implements Message {
 }
 
 /**
