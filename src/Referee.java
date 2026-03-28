@@ -10,7 +10,7 @@ public class Referee {
     private ServerSocket referee;
     private static final int PORT = 2003;
 
-    private static int boardSize;
+    private static int[] board = new int[64];
 
     public Referee() {
 
@@ -51,6 +51,22 @@ public class Referee {
      */
     private void printError(String message) {
         System.err.println("[ERROR]:\n\t\""+ message);
+    }
+
+    private void printBoard() {
+        for (int i = 0; i < board.length; i++) {
+            if (board[i]==0) {
+                System.out.print("X");
+            } else if (board[i] == -1){
+                System.out.print("B");
+            } else if (board[i] == 1) {
+                System.out.print("W");
+            }
+
+            if ((i+1) % 8 == 0) {
+                System.out.print("\n");
+            }
+        }
     }
 
     public static void main(String[] args) {
