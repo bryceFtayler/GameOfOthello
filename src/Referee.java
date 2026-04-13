@@ -8,6 +8,8 @@ import java.net.*;
  */
 public class Referee {
     private ServerSocket referee;
+    private PlayerHandler player1;
+    private PlayerHandler player2;
     private static final int PORT = 2003;
 
     private static int[] board = new int[64];
@@ -33,6 +35,21 @@ public class Referee {
     }
 
     private void awaitPlayers() {
+        try {
+            // Wait for player 1
+            Socket socket = referee.accept();
+            player1 = new PlayerHandler(socket);
+
+            // Wait for player 2
+            socket = referee.accept();
+            player1 = new PlayerHandler(socket);
+            
+        } catch (Exception e) {
+            // handle exception
+            printError("Error waiting for players to join!");
+            e.printStackTrace();
+        }
+        
     }
 
     /**
@@ -76,6 +93,10 @@ public class Referee {
 }
 
 class PlayerHandler implements Runnable {
+
+    public PlayerHandler(Socket s) {
+
+    }
 
     @Override
     public void run() {
